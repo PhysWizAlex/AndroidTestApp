@@ -24,7 +24,7 @@ class MyLayout(Widget):
         responsekivy.wait()
         results = responsekivy.result
         estDiameter = results['estimated_diameter']['meters']
-        # CAD = json.loads(responseDump)['close_approach_data']
+        CAD = results['close_approach_data']
         loadedDump = results['orbital_data']
         
         self.ids.ap.text = 'Aphelion (Furtherst) Distance (AU): ' + str(round(float(loadedDump['aphelion_distance']),2))

@@ -1,91 +1,93 @@
-<MyLayout>
-    BoxLayout:
-        size: root.width, root.height         
-        Screen:
-            MDLabel:
-                
-                text: 'Near Earth Objects Finder'
-                pos_hint: {'center_x': 0.6, 'center_y': 0.97}
-            MDRaisedButton:
-                name: 1
-                size_hint: None,None
-                size: '280dp', '180dp'
-                pos_hint: {'center_x': 0.1, 'center_y': 0.9}
-                text: 'Select Start Date'
-                on_release: root.show_date_picker(self)
-            MDLabel:
-                id: start_date_label
-                size_hint: None,None
-                size: '280dp', '180dp'
-                pos_hint: {'center_x': 0.4, 'center_y': 0.9}
-                text: '0000'
-                
-            MDRaisedButton:
-                name: 2
-                size_hint: None,None
-                size: '280dp', '180dp'
-                pos_hint: {'center_x': 0.1, 'center_y': 0.8}
-                text: 'Select End Date'
-                on_release: root.show_date_picker(self)
-            MDLabel:
-                id: end_date_label
-                size_hint: None,None
-                size: '280dp', '180dp'
-                pos_hint: {'center_x': 0.4, 'center_y': 0.8}
-                text: '0000'
-                
-            MDRaisedButton:
-                size_hint: None,None
-                size: '280dp', '180dp'
-                pos_hint: {'center_x': 0.1, 'center_y': 0.7}
-                text: 'Search'
-                on_release: root.search()
-                
-            MDLabel:
-                id: ap
-                text: 'Aphelion (Furthest) Distance (AU): '
-                pos_hint: {'center_x': 0.55, 'center_y': 0.6}
-            MDLabel:
-                id: per
-                text: 'Perihelion (Closest) Distance (AU): '
-                pos_hint: {'center_x': 0.55, 'center_y': 0.55}
-            MDLabel:
-                id: per_arg
-                text: 'Perihelion Argument (deg): '
-                pos_hint: {'center_x': 0.55, 'center_y': 0.5}
-            MDLabel:
-                id: orb_period
-                text: 'Orbital Period (Days): '
-                pos_hint: {'center_x': 0.55, 'center_y': 0.45}
-            MDLabel:
-                id: mean_motion
-                text: 'Mean Motion (deg/d): '
-                pos_hint: {'center_x': 0.55, 'center_y': 0.4}
-            MDLabel:
-                id: sem_maj_ax
-                text: 'Semi Maj Ax. (AU): '
-                pos_hint: {'center_x': 0.55, 'center_y': 0.35}
-            MDLabel:
-                id: asc_node_long
-                text: 'Ascending Node Longitude (deg): '
-                pos_hint: {'center_x': 0.55, 'center_y': 0.3}
-            MDLabel:
-                id: incl
-                text: 'Inclination (deg): '
-                pos_hint: {'center_x': 0.55, 'center_y': 0.25}
-            MDLabel:
-                id: est_dia
-                text: 'Est. Diameter (meters): '
-                pos_hint: {'center_x': 0.55, 'center_y': 0.2}
-                
-
+<MyLayout>:
+    FloatLayout:
+        size: root.width, root.height     
+        MDTabs:
+            Tab:
+                title: 'Date Search'    
+                BoxLayout:       
+                    Screen:
+                        MDRaisedButton:
+                            name: 1
+                            size_hint: None,None
+                            size: '280dp', '180dp'
+                            pos_hint: {'center_x': 0.1, 'center_y': 0.9}
+                            text: 'Select Start Date'
+                            on_release: root.show_date_picker(self)
+                        MDLabel:
+                            id: start_date_label
+                            size_hint: None,None
+                            size: '280dp', '180dp'
+                            pos_hint: {'center_x': 0.4, 'center_y': 0.9}
+                            text: '0000'
             
+                        MDRaisedButton:
+                            name: 2
+                            size_hint: None,None
+                            size: '280dp', '180dp'
+                            pos_hint: {'center_x': 0.1, 'center_y': 0.8}
+                            text: 'Select End Date'
+                            on_release: root.show_date_picker(self)
+                        MDLabel:
+                            id: end_date_label
+                            size_hint: None,None
+                            size: '280dp', '180dp'
+                            pos_hint: {'center_x': 0.4, 'center_y': 0.8}
+                            text: '0000'
+                            
+                        MDRaisedButton:
+                            size_hint: None,None
+                            size: '280dp', '180dp'
+                            pos_hint: {'center_x': 0.1, 'center_y': 0.7}
+                            text: 'Search'
+                            on_release: root.search()
+                            
+                            
+                        ScrollView:
 
-            ScrollView:
-                size_hint: 0.5,None
-                height: root.height
-                pos_hint: {'center_x': 0.75, 'center_y': 0.5}
-                MDList:
-                    id: list_of_objects
-             
-                
+                            size_hint: 0.5,None
+                            height: root.height
+                            pos_hint: {'center_x': 0.75, 'center_y': 0.45}
+                            MDList:
+                                bg_color: 'BlueGray'
+                                id: list_of_objects
+            Tab:
+                title: 'Object Information'
+                BoxLayout:       
+                    Screen:
+                        MDLabel:
+                            id: ap
+                            text: 'Aphelion (Furthest) Distance (AU): '
+                            pos_hint: {'center_x': 0.55, 'center_y': 0.9}
+                        MDLabel:
+                            id: per
+                            text: 'Perihelion (Closest) Distance (AU): '
+                            pos_hint: {'center_x': 0.55, 'center_y': 0.85}
+                        MDLabel:
+                            id: per_arg
+                            text: 'Perihelion Argument (deg): '
+                            pos_hint: {'center_x': 0.55, 'center_y': 0.8}
+                        MDLabel:
+                            id: orb_period
+                            text: 'Orbital Period (Days): '
+                            pos_hint: {'center_x': 0.55, 'center_y': 0.75}
+                        MDLabel:
+                            id: mean_motion
+                            text: 'Mean Motion (deg/d): '
+                            pos_hint: {'center_x': 0.55, 'center_y': 0.7}
+                        MDLabel:
+                            id: sem_maj_ax
+                            text: 'Semi Maj Ax. (AU): '
+                            pos_hint: {'center_x': 0.55, 'center_y': 0.65}
+                        MDLabel:
+                            id: asc_node_long
+                            text: 'Ascending Node Longitude (deg): '
+                            pos_hint: {'center_x': 0.55, 'center_y': 0.6}
+                        MDLabel:
+                            id: incl
+                            text: 'Inclination (deg): '
+                            pos_hint: {'center_x': 0.55, 'center_y': 0.55}
+                        MDLabel:
+                            id: est_dia
+                            text: 'Est. Diameter (meters): '
+                            pos_hint: {'center_x': 0.55, 'center_y': 0.5}
+                            
